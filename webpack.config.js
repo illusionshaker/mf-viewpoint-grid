@@ -1,5 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const deps = require("./package.json").dependencies;
 
 module.exports = (_, argv) => ({
   output: {
@@ -53,7 +54,16 @@ module.exports = (_, argv) => ({
       exposes: {
         "./Grid": "./src/Grid",
       },
-      // shared: { react: { singleton: true }, "react-dom": { singleton: true } }, // share the same version of react and react-dom
+      shared: {
+        react: {
+          singleton: true,
+          requiredVersion: deps.react,
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: deps["react-dom"],
+        },
+      }
     }),
     new HtmlWebPackPlugin({
       template: "./src/index.html",
