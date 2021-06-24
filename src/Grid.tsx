@@ -15,7 +15,7 @@ const Grid = () => {
   }, []);
   
   return (
-    <div className="ag-theme-balham-dark">
+    <div className="mf-viewpoint-grid ag-theme-balham-dark">
       <AgGridReact rowData={rowData}>
         <AgGridColumn field="make" sortable={ true } filter={ true }></AgGridColumn>
         <AgGridColumn field="model" sortable={ true } filter={ true }></AgGridColumn>
