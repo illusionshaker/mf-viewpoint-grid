@@ -6,7 +6,7 @@ import "./index.scss";
 const App = () => (
   <div>
     <p>Grid Micro Frontend</p>
-    <Grid />
+    <Grid locale="en-au" />
   </div>
 );
 

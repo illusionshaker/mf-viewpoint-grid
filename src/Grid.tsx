@@ -1,12 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FunctionComponent } from 'react';
 import { AgGridColumn, AgGridReact } from 'ag-grid-react';
 
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham-dark.css';
 import "./Grid.scss";
 
-const Grid = () => {
+export interface IGridProps {
+  locale: string
+}
 
+const Grid: FunctionComponent<IGridProps> = (
+  props: IGridProps
+) => {
+  const { locale } = props;
   const [rowData, setRowData] = useState([]);
 
   useEffect(() => {
@@ -17,6 +23,7 @@ const Grid = () => {
   
   return (
     <div className="mf-viewpoint-grid ag-theme-balham-dark">
+      <p>Locale micro frontend: {locale}</p>
       <AgGridReact rowData={rowData}>
         <AgGridColumn field="make" sortable={ true } filter={ true }></AgGridColumn>
         <AgGridColumn field="model" sortable={ true } filter={ true }></AgGridColumn>
