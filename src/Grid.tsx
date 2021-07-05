@@ -15,6 +15,10 @@ const Grid: FunctionComponent<IGridProps> = (
   const { locale } = props;
   const [rowData, setRowData] = useState([]);
 
+  const localise = (localizationKey: string): string => {
+    return global?.IressTraderPlus?.UICore?.CultureInfo?.localize ? global.IressTraderPlus.UICore.CultureInfo.localize(localizationKey): localizationKey;
+  };
+
   useEffect(() => {
     fetch('https://www.ag-grid.com/example-assets/row-data.json')
     .then(result => result.json())
@@ -24,6 +28,9 @@ const Grid: FunctionComponent<IGridProps> = (
   return (
     <>
       <p>Locale in micro frontend: {locale}</p>
+      <p>
+        Translate in micro frontend "common.control.ok": {localise("common.control.ok")}
+      </p>
       <div className="mf-viewpoint-grid ag-theme-balham-dark">
         <AgGridReact rowData={rowData}>
           <AgGridColumn field="make" sortable={ true } filter={ true }></AgGridColumn>
