@@ -22,14 +22,16 @@ const Grid: FunctionComponent<IGridProps> = (
   }, []);
   
   return (
-    <div className="mf-viewpoint-grid ag-theme-balham-dark">
-      <p>Locale micro frontend: {locale}</p>
-      <AgGridReact rowData={rowData}>
-        <AgGridColumn field="make" sortable={ true } filter={ true }></AgGridColumn>
-        <AgGridColumn field="model" sortable={ true } filter={ true }></AgGridColumn>
-        <AgGridColumn field="price" sortable={ true } filter={ true }></AgGridColumn>
-      </AgGridReact>
-    </div>
+    <>
+      <p>Locale in micro frontend: {locale}</p>
+      <div className="mf-viewpoint-grid ag-theme-balham-dark">
+        <AgGridReact rowData={rowData}>
+          <AgGridColumn field="make" sortable={ true } filter={ true }></AgGridColumn>
+          <AgGridColumn field="model" sortable={ true } filter={ true }></AgGridColumn>
+          <AgGridColumn field="price" sortable={ true } filter={ true }></AgGridColumn>
+        </AgGridReact>
+      </div>
+    </>
   );
 };
 
