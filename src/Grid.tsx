@@ -37,6 +37,7 @@ const Grid: FunctionComponent<IGridProps> = (
   
   return (
     <>
+      <p>Broadcast payload: {JSON.stringify(broadcastPayload)}</p>
       <p>Locale in micro frontend: <strong>{locale}</strong></p>
       <p>
         Translate in micro frontend "common.control.ok": <strong>{localise("common.control.ok")}</strong>
