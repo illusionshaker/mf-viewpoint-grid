@@ -14,7 +14,7 @@ const Grid: FunctionComponent<IGridProps> = (
 ) => {
   const { locale, broadcastPayload } = props;
   const [rowData, setRowData] = useState([]);
-  const [ currentBroadcastPayload, setCurrentBroadcastPayload] = useState(props.broadcastPayload)
+  const [ currentBroadcastPayload, setCurrentBroadcastPayload] = useState(broadcastPayload)
 
   const localise = (localizationKey: string): string => {
     return global?.IressTraderPlus?.UICore?.CultureInfo?.localize ? global.IressTraderPlus.UICore.CultureInfo.localize(localizationKey): localizationKey;
