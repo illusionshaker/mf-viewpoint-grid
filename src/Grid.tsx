@@ -12,21 +12,21 @@ export interface IGridProps {
 const Grid: FunctionComponent<IGridProps> = (
   props: IGridProps
 ) => {
-  const { locale } = props;
+  const { locale, broadcastPayload } = props;
   const [rowData, setRowData] = useState([]);
-  const [broadcastPayload, setBroadcastPayload] = useState(props.broadcastPayload)
+  const [ currentBroadcastPayload, setCurrentBroadcastPayload] = useState(props.broadcastPayload)
 
   const localise = (localizationKey: string): string => {
     return global?.IressTraderPlus?.UICore?.CultureInfo?.localize ? global.IressTraderPlus.UICore.CultureInfo.localize(localizationKey): localizationKey;
   };
 
   const handleBroadcastPaylodChange = (event: React.SyntheticEvent): void => {
-    setBroadcastPayload(JSON.parse(event.target.value));
+    setCurrentBroadcastPayload(JSON.parse(event.target.value));
   }
 
   const handleSubmit = (event: React.SyntheticEvent): void => {
     event.preventDefault();
-    console.log("we need to do something here...", broadcastPayload);
+    console.log("we need to do something here...", currentBroadcastPayload);
   }
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const Grid: FunctionComponent<IGridProps> = (
   
   return (
     <>
-      <p>Broadcast payload: {JSON.stringify(broadcastPayload)}</p>
+      <p>Broadcast payload: {JSON.stringify(currentBroadcastPayload)}</p>
       <p>Locale in micro frontend: <strong>{locale}</strong></p>
       <p>
         Translate in micro frontend "common.control.ok": <strong>{localise("common.control.ok")}</strong>
@@ -46,7 +46,7 @@ const Grid: FunctionComponent<IGridProps> = (
         <label>Broadcast Payload:</label>
         <br />
         <textarea 
-          value={JSON.stringify(broadcastPayload)} 
+          value={JSON.stringify(currentBroadcastPayload)} 
           onChange={handleBroadcastPaylodChange} 
           style={
             {
