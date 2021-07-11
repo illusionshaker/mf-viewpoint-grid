@@ -14,7 +14,7 @@ const Grid: FunctionComponent<IGridProps> = (
 ) => {
   const { locale, broadcastPayload } = props;
   const [rowData, setRowData] = useState([]);
-  const [ currentBroadcastPayload, setCurrentBroadcastPayload] = useState(broadcastPayload)
+  const [ currentBroadcastPayload, setCurrentBroadcastPayload] = useState(broadcastPayload);
 
   const localise = (localizationKey: string): string => {
     return global?.IressTraderPlus?.UICore?.CultureInfo?.localize ? global.IressTraderPlus.UICore.CultureInfo.localize(localizationKey): localizationKey;
@@ -42,22 +42,6 @@ const Grid: FunctionComponent<IGridProps> = (
       <p>
         Translate in micro frontend "common.control.ok": <strong>{localise("common.control.ok")}</strong>
       </p>
-      <form onSubmit={handleSubmit}>
-        <label>Broadcast Payload:</label>
-        <br />
-        <textarea 
-          value={JSON.stringify(currentBroadcastPayload)} 
-          onChange={handleBroadcastPaylodChange} 
-          style={
-            {
-              width: "100%",
-              height: "10%"
-            }
-          } 
-        />
-        <br />
-        <input type="submit" value="Submit" />
-      </form>
       <div className="mf-viewpoint-grid ag-theme-balham-dark">
         <AgGridReact rowData={rowData}>
           <AgGridColumn field="make" sortable={ true } filter={ true }></AgGridColumn>
