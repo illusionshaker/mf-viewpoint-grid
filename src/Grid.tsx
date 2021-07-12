@@ -7,6 +7,7 @@ import "./Grid.scss";
 export interface IGridProps {
   locale: string,
   broadcastPayload: any,
+  elemSelector?: string,
 }
 
 const Grid: FunctionComponent<IGridProps> = (
@@ -14,20 +15,10 @@ const Grid: FunctionComponent<IGridProps> = (
 ) => {
   const { locale, broadcastPayload } = props;
   const [rowData, setRowData] = useState([]);
-  const [ currentBroadcastPayload, setCurrentBroadcastPayload] = useState(broadcastPayload);
 
   const localise = (localizationKey: string): string => {
     return global?.IressTraderPlus?.UICore?.CultureInfo?.localize ? global.IressTraderPlus.UICore.CultureInfo.localize(localizationKey): localizationKey;
   };
-
-  const handleBroadcastPaylodChange = (event: React.SyntheticEvent): void => {
-    setCurrentBroadcastPayload(JSON.parse(event.target.value));
-  }
-
-  const handleSubmit = (event: React.SyntheticEvent): void => {
-    event.preventDefault();
-    console.log("we need to do something here...", currentBroadcastPayload);
-  }
 
   useEffect(() => {
     fetch('https://www.ag-grid.com/example-assets/row-data.json')
