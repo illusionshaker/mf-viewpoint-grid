@@ -28,11 +28,20 @@ const Grid: FunctionComponent<IGridProps> = (
   
   return (
     <>
-      <p>Broadcast payload: {JSON.stringify(broadcastPayload)}</p>
-      <p>Locale in micro frontend: <strong>{locale}</strong></p>
-      <p>
-        Translate in micro frontend "common.control.ok": <strong>{localise("common.control.ok")}</strong>
-      </p>
+      <table>
+        <tr>
+          <th align="left">Broadcast Payload</th>
+          <td>{JSON.stringify(broadcastPayload)}</td>
+        </tr>
+        <tr> 
+          <th align="left">Locale</th>
+          <td>{locale}</td>
+        </tr>
+        <tr>
+          <th align="left">Translation of "common.control.ok"</th>
+          <td>{localise("common.control.ok")}</td>
+        </tr>
+      </table>
       <div className="mf-viewpoint-grid ag-theme-balham-dark">
         <AgGridReact rowData={rowData}>
           <AgGridColumn field="make" sortable={ true } filter={ true }></AgGridColumn>
